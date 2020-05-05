@@ -283,6 +283,7 @@ namespace GameOfLife
             pictureBox_GameField.Paint += new PaintEventHandler(pictureBox_GameField_Paint);
         }
 
+        // Показать сетку
         private void pictureBox_NotGrid_Click(object sender, EventArgs e)
         {
             isGrid = true;
@@ -290,6 +291,7 @@ namespace GameOfLife
             PaintField();
         }
 
+        // Скрыть сетку
         private void pictureBox_Grid_Click(object sender, EventArgs e)
         {
             isGrid = false;

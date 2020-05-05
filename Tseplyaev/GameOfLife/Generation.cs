@@ -80,9 +80,11 @@ namespace GameOfLife
                 {
                     count = CountNeighbors(i, j);
                     nextGeneration[i, j] = lifeGeneration[i, j];
-                    // если кол-во соседей у данной клетки 3 и клетка "живая"
+                    // если кол-во соседей у данной клетки 3 и клетка "мертвая",
+                    // то зарождается жизнь
                     nextGeneration[i, j] = (count == 3) && !nextGeneration[i, j] ? true : nextGeneration[i, j];
-                    // если кол-во соседей у данной клетки 2 или 1 и клетка не "живая"
+                    // если кол-во соседей у данной клетки меньше 2 или больше 3 и клетка "живая",
+                    // то клетка умирает
                     nextGeneration[i, j] = ((count < 2) || (count > 3)) &&
                         nextGeneration[i, j] ? false : nextGeneration[i, j];
                 }
@@ -91,7 +93,7 @@ namespace GameOfLife
         }
 
         /// <summary>
-        /// Посчитать кол-во соседей у клетки заданной своими координатами
+        /// Посчитать кол-во соседей у клетки, заданной своими координатами
         /// </summary>
         public int CountNeighbors(int x, int y)
         {
@@ -122,6 +124,9 @@ namespace GameOfLife
             lifeGeneration[x, y] = !lifeGeneration[x, y];
         }
 
+        /// <summary>
+        /// Обнулить все элементы массива
+        /// </summary>
         public void Clear()
         {
             for (int i = 0; i < lifeSize; i++)
